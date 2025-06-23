@@ -1,6 +1,16 @@
 import React from "react"
 import "./globals.css"
-import { Fonts } from "@/utils/fonts"
+import { Inter, Jost, } from 'next/font/google'
+
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+})
+
+const jost = Jost({
+    subsets: ['latin'],
+    variable: '--font-jost',
+})
 import type { Metadata } from "next"
 export const metadata: Metadata = {
     title: 'Tire Nexsus',
@@ -22,7 +32,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 
     return (
         <html lang="en">
-            <body className={`${Fonts.inter} ${Fonts.jost} antialiased w-full h-full`}>
+            <body className={`${inter.className} ${jost.variable} antialiased w-full h-full`}>
                 <Header />
                 <div className="flex flex-col w-full min-h-screen">
                     {children}
