@@ -58,7 +58,7 @@ const WhyChooseCustomer = () => {
                 <div className="mt-[137px] flex flex-col gap-[56px]">
                     <h2 className='font-[700] text-center text-[#FFF] text-[30px] leading-[107%]'>Best price on all tire brands</h2>
 
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-start lg:justify-center overflow-hidden overflow-scroll">
                         {[1, 2, 3, 4, 5, 6, 7].map((item: number) => <Image key={item} src={`/brands/brand-${item}.png`} priority className='rounded-full hover:scale-[1.2] ease-in-out duration-500' width={150} height={150} alt='' />)}
                     </div>
                 </div>
