@@ -2,43 +2,41 @@
 import { useState, useEffect, } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
 
 import MobileHeader from "./headerMobile"
 
 const Header = () => {
 
-    const pathname = usePathname()
     const [isMobile, setIsMobile] = useState(false)
-    const [prevScrollpos, setPrevScrollpos] = useState(0)
-    const [scrollTimeout, setScrollTimeout] = useState<number | null>(null)
+    // const [prevScrollpos, setPrevScrollpos] = useState(0)
+    // const [scrollTimeout, setScrollTimeout] = useState<number | null>(null)
 
-    const handleScroll = () => {
-        const currentScrollPos = window.scrollY;
-        const navbar = document.getElementById("navbar")
+    // const handleScroll = () => {
+    //     const currentScrollPos = window.scrollY;
+    //     const navbar = document.getElementById("navbar")
 
-        if (navbar) {
-            if (currentScrollPos > prevScrollpos && currentScrollPos > 50) {
-                navbar.style.top = "-90px"
-            } else {
-                navbar.style.top = "-90px"
-            }
-        }
+    //     if (navbar) {
+    //         if (currentScrollPos > prevScrollpos && currentScrollPos > 50) {
+    //             navbar.style.top = "-90px"
+    //         } else {
+    //             navbar.style.top = "-90px"
+    //         }
+    //     }
 
-        setPrevScrollpos(currentScrollPos)
-        if (scrollTimeout) clearTimeout(scrollTimeout)
+    //     setPrevScrollpos(currentScrollPos)
+    //     if (scrollTimeout) clearTimeout(scrollTimeout)
 
-        // When scroll stop
-        setScrollTimeout(
-            setTimeout(() => {
-                const navbar = document.getElementById("navbar")
-                if (navbar) {
-                    navbar.style.transition = `all 0.5s ease-in-out`
-                    navbar.style.top = "0"
-                }
-            }, 100) as unknown as number
-        )
-    }
+    //     // When scroll stop
+    //     setScrollTimeout(
+    //         setTimeout(() => {
+    //             const navbar = document.getElementById("navbar")
+    //             if (navbar) {
+    //                 navbar.style.transition = `all 0.5s ease-in-out`
+    //                 navbar.style.top = "0"
+    //             }
+    //         }, 100) as unknown as number
+    //     )
+    // }
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768)
@@ -51,9 +49,9 @@ const Header = () => {
             // window.removeEventListener("resize", handleResize)
             // window.removeEventListener("scroll", handleScroll)
 
-            if (scrollTimeout) clearTimeout(scrollTimeout)
+            // if (scrollTimeout) clearTimeout(scrollTimeout)
         }
-    }, [prevScrollpos, scrollTimeout])
+    }, [])
     const style = `h-[50px] p-2 text-nowrap no-underline font-inter font-[500] text-[16px] lg:text-[20px] leading-[100%] tracking-[0%] text-[#000]`
 
     return (
