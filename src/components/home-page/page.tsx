@@ -4,6 +4,7 @@ import HeroSection from './hero-section/page'
 import WhyChooseTireNexsus from './why-choose-tirenexsus/page'
 import WhyChooseCustomer from './why-choose-customer/page'
 import GuidedShopping from './guided-shopping/page'
+import Contact from './contact-section/page'
 
 const HomePage = () => {
 
@@ -13,6 +14,7 @@ const HomePage = () => {
             <WhyChooseTireNexsus />
             <WhyChooseCustomer />
             <GuidedShopping />
+            <Contact />
         </>
     )
 }
