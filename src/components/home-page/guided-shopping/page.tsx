@@ -70,6 +70,24 @@ const GuidedShopping = () => {
                 <ThirdCard />
             </div>
 
+            <div className="flex bg-[url('/bg/join-mail.png')] bg-cover bg-center bg-no-repeat py-20 lg:py-24 rounded-[57px] min-h-[300px]">
+                <div className="flex flex-col items-center xl:flex-row md:items-center xl:justify-between gap-y-12 xl:gap-10 w-full px-[30px] xl:px-[80px]">
+                    <div className="flex flex-col items-center text-white w-full xl:w-fit">
+                        <h2 className='font-jost font-[500] text-[40px] leading-[107%] xl:text-nowrap'>Join our mailing list</h2>
+                        <p className='mt-3 font-[500] text-[18px] leading-[167%]'>To get exclusive deals when we launch</p>
+                    </div>
+
+
+                    <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 w-full mx-auto xl:w-3/5">
+                        <input
+                            placeholder='Your email address'
+                            className='w-full max-w-[400px] h-[64px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[100%] border rounded-[20px] py-5 px-4'
+                        />
+                        <button className='w-full max-w-[254px] bg-[#3076B2] text-white rounded-full h-[64px]'>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
         </section>
     )
 }
