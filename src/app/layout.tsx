@@ -12,7 +12,7 @@ const jost = Jost({
 
 import type { Metadata } from "next"
 export const metadata: Metadata = {
-    title: 'Tire Nexsus',
+    title: 'Tire Nexsus | Buy new tires online at affordable prices',
     description: 'Buy new tyres online at Tire Nexsus. Affordable prices, fast shipping across USA, and a wide selection of premium brands for every vehicle type.',
     keywords: [
         'TireNexsus',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         },
     },
     alternates: {
-        canonical: `https://tirenexsus.com`,
+        canonical: `https://www.tirenexsus.com`,
         languages: {
             'en-US': 'https://www.tirenexsus.com',
         },
