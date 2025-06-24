@@ -33,7 +33,7 @@ const WhyChooseTireNexsus = () => {
     }
 
     return (
-        <section id='for-suppliers' className='bg-white pt-[50px] md:pt-[134px] pb-[100px] md:pb-[168px] px-[30px] md:px-[50px] xl:px-[80px] w-full max-w-[1440px] mx-auto'>
+        <section id='for-suppliers' className='bg-white pt-[90px] md:pt-[134px] pb-[100px] md:pb-[168px] px-[30px] md:px-[50px] xl:px-[80px] w-full max-w-[1440px] mx-auto'>
             <div className="flex flex-col md:flex-row gap-10 md:gap-[50px] lg:gap-[150px]">
                 <h1 className='font-jost font-[600] text-[#003A6D] text-[40px] leading-[107%]'>
                     Why choose TireNexsus?

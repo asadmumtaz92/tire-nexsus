@@ -41,7 +41,7 @@ const WhyChooseCustomer = () => {
     }
 
     return (
-        <section id='for-customers' className='bg-[#000000] py-[130px] md:pb-[120px]'>
+        <section id='for-customers' className='bg-[#000000] py-[100px] md:py-[120px]'>
 
             <div className="flex flex-col px-[30px] md:px-[50px] xl:px-[80px] w-full max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row gap-10 md:gap-[50px] lg:gap-[150px]">

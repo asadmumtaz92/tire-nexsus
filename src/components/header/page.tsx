@@ -8,7 +8,7 @@ import MobileHeader from "./headerMobile"
 const Header = () => {
 
     const [isMobile, setIsMobile] = useState(false)
-    // const [prevScrollpos, setPrevScrollpos] = useState(0)
+    const [prevScrollpos, setPrevScrollpos] = useState(0)
     // const [scrollTimeout, setScrollTimeout] = useState<number | null>(null)
 
     // const handleScroll = () => {
@@ -39,14 +39,20 @@ const Header = () => {
     // }
 
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768)
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768)
+            const currentScrollPos = window.scrollY;
+            setPrevScrollpos(currentScrollPos)
+        }
 
         handleResize()
-        // window.addEventListener("resize", handleResize)
+        window.addEventListener("scroll", handleResize)
+        window.addEventListener("resize", handleResize)
         // window.addEventListener("scroll", handleScroll)
 
         return () => {
-            // window.removeEventListener("resize", handleResize)
+            window.removeEventListener("scroll", handleResize)
+            window.removeEventListener("resize", handleResize)
             // window.removeEventListener("scroll", handleScroll)
 
             // if (scrollTimeout) clearTimeout(scrollTimeout)
@@ -55,8 +61,8 @@ const Header = () => {
     const style = `h-[50px] p-2 text-nowrap no-underline font-inter font-[500] text-[16px] lg:text-[20px] leading-[100%] tracking-[0%] text-[#000]`
 
     return (
-        <header id="navbar" className={`bg-white flex absolute top-[33px] md:top-[43px] left-[30px] right-[30px] md:left-[54px] md:right-[54px] z-[30] h-[70px] md:h-[100px] rounded-[51px]`}>
-            <div className="flex justify-between items-center w-full h-[70px] md:h-[100px] px-[30px] lg:px-[105px] mx-auto">
+        <header id="navbar" className={`${prevScrollpos > 50 && '!top-2'} bg-white flex fixed top-[23px] md:top-[35px] left-[30px] right-[30px] md:left-[54px] md:right-[54px] z-[30] h-[70px] md:h-[90px] rounded-[51px] shadow-lg`}>
+            <div className="flex justify-between items-center w-full h-[70px] md:h-[90px] px-[30px] lg:px-[105px] mx-auto">
 
                 {isMobile
                     ? <MobileHeader />
