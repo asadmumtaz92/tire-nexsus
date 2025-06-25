@@ -61,7 +61,7 @@ const GuidedShopping = () => {
             <p className='mt-[45px] mb-6 font-[500] text-[#000] text-[20px] leading-[167%]'>
                 {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare, tellus ullamcorper tincidunt molestie, eros urna elementum nibh, quis sagittis mi lectus et augue. `}
             </p>
-            <Image src={'/images/guid-card-1.png'} priority className='absolute left-5 right-5 bottom-0 mx-auto object-center w-auto' width={350} height={350} alt={'tire images'} />
+            <Image src={'/images/guid-card-1.png'} priority className='absolute left-5 right-5 bottom-0 mx-auto object-center cw-auto' width={350} height={350} alt={'tire images'} />
         </div>
     }
     const SecondCard = () => {
