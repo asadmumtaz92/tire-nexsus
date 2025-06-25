@@ -1,4 +1,4 @@
-import React, { JSX, } from 'react'
+import React from 'react'
 import Image from 'next/image'
 
 import ContactForm from './form'
@@ -6,8 +6,7 @@ import ContactForm from './form'
 interface Option_Props {
     iocn: string
     title: string
-    desc: string | JSX.Element
-    desc2?: string | JSX.Element
+    desc: string
 }
 
 const Contact = () => {
@@ -16,19 +15,9 @@ const Contact = () => {
         'Mon - Fri: 8am - 7pm ET',
         'Sat: 9am - 5pm ET',
         'Sun: Closed',
-        'We are closed for holiday New Year’s Day.',
     ]
     const options: Option_Props[] = [
         {
-            iocn: '/icons/chat.svg',
-            title: 'Chat',
-            desc: 'Fastest option!',
-        }, {
-            iocn: '/icons/sms.svg',
-            title: 'SMS',
-            desc: '+1 (267) 0000000',
-            desc2: `Terms & conditions apply.`,
-        }, {
             iocn: '/icons/phone.svg',
             title: 'Call',
             desc: '+1 (267) 0000000',
@@ -39,7 +28,7 @@ const Contact = () => {
         },
     ]
     const TimeCard = () => {
-        return <div className='mx-auto sm:ml-0 max-w-[340px] bg-white sm:border-r lg:pr-16 xl:pb-5'>
+        return <div className='w-full mx-auto sm:ml-0 max-w-[400px] sm:max-w-fit sm:pr-10 bg-white sm:border-r lg:pr-16 xl:pb-5'>
             <div className="flex items-center gap-[18px]">
                 <Image src={'/icons/timing.svg'} priority className='w-[40px] h-[40px] md:w-[60px] md:h-[60px]' width={60} height={60} alt={'timing icon'} />
                 <h2 className='font-[500] text-[#000] text-[25px] leading-[107%]'>
@@ -67,10 +56,10 @@ const Contact = () => {
                 </h1>
             </div>
 
-            <div className='mt-16 mb-[100px] md:mb-[146px] flex flex-wrap lg:flex-row lg:flex-nowrap gap-9 lg:gap-12'>
+            <div className='mt-16 mb-[100px] md:mb-[146px] flex flex-wrap md:flex-row md:flex-nowrap gap-9 lg:gap-12'>
                 <TimeCard />
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full">
-                    {options?.map((item: Option_Props) => <div key={item?.title} className='mx-auto w-full max-w-[350px] min-h-[120px] md:min-h-[160px] py-5 md:py-0'>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                    {options?.map((item: Option_Props) => <div key={item?.title} className='mx-auto w-full max-w-[400px] min-h-[120px] md:min-h-[160px] py-5 md:py-0'>
                         <div className="flex items-center gap-[18px]">
                             <Image src={item?.iocn} priority className='w-[40px] h-[40px] md:w-[60px] md:h-[60px]' width={60} height={60} alt={item?.title} />
                             <h2 className='font-[500] text-[#000] text-[25px] leading-[107%]'>
@@ -79,8 +68,7 @@ const Contact = () => {
                         </div>
 
                         <p className='mt-6 font-[500] text-[#000] text-[18px] leading-[167%]'>
-                            {item.desc}<br />
-                            {item.desc2}
+                            {item.desc}
                         </p>
                     </div>)}
                 </div>
