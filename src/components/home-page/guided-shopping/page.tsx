@@ -53,7 +53,7 @@ const GuidedShopping = () => {
         'Simple score',
     ]
     const FirstCard = () => {
-        return <div className='mx-auto w-full max-w-[445px] rounded-[24.11px] bg-white pt-[38px] px-[22px] hover:scale-[1.06] ease-in-out duration-500' style={{ boxShadow: "0px 0px 39px 0px #00000026" }}>
+        return <div className='relative mx-auto w-full max-w-[445px] min-h-[600px] sm:min-h-[580px] rounded-[24.11px] bg-white pt-[38px] px-[22px] hover:scale-[1.06] ease-in-out duration-500' style={{ boxShadow: "0px 0px 39px 0px #00000026" }}>
             <h2 className='font-[500] text-[#3076B2] text-[25px] leading-[107%]'>
                 {`Find the tire right for you.`}
             </h2>
@@ -61,7 +61,7 @@ const GuidedShopping = () => {
             <p className='mt-[45px] mb-6 font-[500] text-[#000] text-[20px] leading-[167%]'>
                 {`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare, tellus ullamcorper tincidunt molestie, eros urna elementum nibh, quis sagittis mi lectus et augue. `}
             </p>
-            <Image src={'/images/guid-card-1.png'} priority className='w-full max-w-[400px] h-[351px]' width={400} height={400} alt={'tire images'} />
+            <Image src={'/images/guid-card-1.png'} priority className='absolute left-5 right-5 bottom-0 mx-auto object-center w-auto' width={350} height={350} alt={'tire images'} />
         </div>
     }
     const SecondCard = () => {
