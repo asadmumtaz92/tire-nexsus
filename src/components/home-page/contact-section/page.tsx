@@ -1,6 +1,7 @@
-'use client'
-import React, { useState, JSX, } from 'react'
+import React, { JSX, } from 'react'
 import Image from 'next/image'
+
+import ContactForm from './form'
 
 interface Option_Props {
     iocn: string
@@ -10,24 +11,6 @@ interface Option_Props {
 }
 
 const Contact = () => {
-
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-
-        loading: false,
-        success: '',
-        error: '',
-    })
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target
-        setFormData(prev => ({ ...prev, [name]: value, }))
-    }
-
-    const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    }
 
     const cardData: string[] = [
         'Mon - Fri: 8am - 7pm ET',
@@ -103,56 +86,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="flex bg-[url('/bg/contact.png')] bg-cover bg-center bg-no-repeat py-16 px-5 sm:px-8 lg:p-20 rounded-[57px] min-h-[694px] drop-shadow-xl">
-                <div className="flex flex-col items-start justify-center gap-y-12 xl:gap-10 w-full max-w-[856px]">
-                    <div className="flex flex-col items-start text-white w-full xl:w-fit">
-                        <h2 className='font-jost font-[500] text-[40px] leading-[107%] xl:text-nowrap'>
-                            Send us a Message
-                        </h2>
-                        <p className='mt-3 font-[500] text-[18px] leading-[167%]'>
-                            Reach out to us with any query and let our team of experts handle it for you.
-                        </p>
-                    </div>
-
-                    <form onSubmit={formHandler} className="flex flex-col items-start sm:justify-center gap-[42px] w-full mx-auto">
-                        <div className="flex flex-wrap sm:flex-row sm:flex-nowrap w-full gap-5 max-w-[737px]">
-                            <input
-                                type='text'
-                                id='name'
-                                name='name'
-                                placeholder='Full name'
-                                required
-                                value={formData?.name}
-                                onChange={handleChange}
-                                className='w-full sm:max-w-[400px] h-[64px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[100%] border rounded-[20px] py-5 px-4'
-                            />
-                            <input
-                                type='email'
-                                id='email'
-                                name='email'
-                                placeholder='Email'
-                                required
-                                value={formData?.email}
-                                onChange={handleChange}
-                                className='w-full sm:max-w-[400px] h-[64px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[100%] border rounded-[20px] py-5 px-4'
-                            />
-                        </div>
-
-                        <div className='w-full'>
-                            <textarea
-                                id='message'
-                                name='message'
-                                placeholder='Your message'
-                                rows={5}
-                                value={formData?.message}
-                                onChange={handleChange}
-                                className='w-full max-w-[737px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[130%] border rounded-[20px] py-5 px-4'
-                            ></textarea>
-                        </div>
-                        <button className='cursor-pointer w-full max-w-[254px] bg-[#3076B2] font-[500] text-white text-[20px] rounded-full h-[64px]'>Submit</button>
-                    </form>
-                </div>
-            </div>
+            <ContactForm />
         </section>
     )
 }

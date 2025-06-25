@@ -1,7 +1,50 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 const GuidedShopping = () => {
+
+    const [apiResp, setApiResp] = useState({
+        email: '',
+        loading: false,
+        error: '',
+        success: '',
+    })
+    const newsLetterHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        if (apiResp?.email == '' || apiResp?.email?.length < 10) {
+            setApiResp(prev => ({ ...prev, error: 'Please enter valid e-mail address.', }))
+        } else {
+            try {
+                setApiResp(prev => ({ ...prev, error: '', loading: true, }))
+                const formData = {
+                    email: apiResp?.email
+                }
+                const res = await fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+
+                const result = await res.json()
+                if (res.ok) {
+                    setApiResp(prev => ({ ...prev, email: '', error: '', loading: false, success: 'Thank you! You’ve successfully subscribed to our newsletter.', }))
+                    setTimeout(() => {
+                        setApiResp(prev => ({ ...prev, success: '', }))
+                    }, 3000)
+
+                } else {
+                    setApiResp(prev => ({ ...prev, loading: false, error: result?.message, }))
+                }
+            } catch (error) {
+                console.log("Error:", error)
+                setApiResp(prev => ({ ...prev, error: '', loading: false, }))
+            }
+        }
+    }
 
     const cardData: string[] = [
         'Vehicle information',
@@ -9,7 +52,6 @@ const GuidedShopping = () => {
         'Your location',
         'Simple score',
     ]
-
     const FirstCard = () => {
         return <div className='mx-auto w-full max-w-[445px] rounded-[24.11px] bg-white pt-[38px] px-[22px] hover:scale-[1.06] ease-in-out duration-500' style={{ boxShadow: "0px 0px 39px 0px #00000026" }}>
             <h2 className='font-[500] text-[#3076B2] text-[25px] leading-[107%]'>
@@ -77,13 +119,23 @@ const GuidedShopping = () => {
                         <p className='mt-3 font-[500] text-[18px] leading-[167%]'>To get exclusive deals when we launch</p>
                     </div>
 
-
-                    <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 w-full mx-auto xl:w-3/5">
-                        <input
-                            placeholder='Your email address'
-                            className='w-full max-w-[400px] h-[64px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[100%] border rounded-[20px] py-5 px-4'
-                        />
-                        <button className='w-full max-w-[254px] bg-[#3076B2] text-white rounded-full h-[64px]'>Subscribe</button>
+                    <div className='flex flex-col w-full mx-auto xl:w-3/5'>
+                        <form onSubmit={newsLetterHandler} className="flex flex-col sm:flex-row items-center sm:justify-center gap-6 w-full">
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder='Your email address'
+                                value={apiResp?.email}
+                                onChange={(e) => setApiResp(prevState => ({ ...prevState, email: e?.target?.value }))}
+                                className='w-full max-w-[400px] h-[64px] bg-[#AFAFAF33] text-white font-[400] text-[18px] leading-[100%] border rounded-[20px] py-5 px-4'
+                            />
+                            <button disabled={apiResp?.loading} type="submit" className='w-full max-w-[254px] bg-[#3076B2] text-white rounded-full h-[64px]'>
+                                {apiResp?.loading ? 'Please wait...' : 'Subscribe'}
+                            </button>
+                        </form>
+                        {apiResp?.error && <p className="max-w-[400px] sm:max-w-full md:max-w-[670px] mx-auto bg-red-100 text-red-600 px-4 py-2 rounded text-center w-full mt-5 first-letter:uppercase">{apiResp?.error}</p>}
+                        {apiResp?.success && <p className="max-w-[400px] sm:max-w-full md:max-w-[670px] mx-auto bg-green-100 text-green-600 px-4 py-2 rounded text-center w-full mt-5 first-letter:uppercase">{apiResp?.success}</p>}
                     </div>
                 </div>
             </div>
